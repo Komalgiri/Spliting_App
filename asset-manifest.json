@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/Komalgiri/Spliting_App/static/css/main.e6c13ad2.css",
+    "main.js": "/Komalgiri/Spliting_App/static/js/main.2893ebb3.js",
+    "static/js/453.744a3b59.chunk.js": "/Komalgiri/Spliting_App/static/js/453.744a3b59.chunk.js",
+    "static/media/Background2.jpg": "/Komalgiri/Spliting_App/static/media/Background2.b45aa884834811abd7bc.jpg",
+    "static/media/signupImage.jpg": "/Komalgiri/Spliting_App/static/media/signupImage.74f079c6fe808394fc03.jpg",
+    "static/media/welcome.jpg": "/Komalgiri/Spliting_App/static/media/welcome.b5e085240536233b0dce.jpg",
+    "index.html": "/Komalgiri/Spliting_App/index.html",
+    "main.e6c13ad2.css.map": "/Komalgiri/Spliting_App/static/css/main.e6c13ad2.css.map",
+    "main.2893ebb3.js.map": "/Komalgiri/Spliting_App/static/js/main.2893ebb3.js.map",
+    "453.744a3b59.chunk.js.map": "/Komalgiri/Spliting_App/static/js/453.744a3b59.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.2893ebb3.js"
+  ]
+}

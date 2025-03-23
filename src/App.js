@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/login';
+import Homepage from './components/Homepage';
+import MainPage from './components/Mainpage'; // Import the new MainPage component
+import Payment from './components/Payment';
+import ChatModal from './components/ChatModal';
+import Split from './components/Split';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/Homepage" element={<Homepage />} />
+        <Route path="/MainPage" element={<MainPage />} /> {/* New route for MainPage */}
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/ChatModal" element={<ChatModal />} />
+        <Route path="/Split" element={<Split />} />
+        
+      </Routes>
+    </Router>
   );
 }
 

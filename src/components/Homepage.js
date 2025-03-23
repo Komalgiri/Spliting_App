@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaTimes, FaArrowRight } from 'react-icons/fa';
-import { v4 as uuidv4 } from 'uuid';
+import { FaTimes } from 'react-icons/fa';
 import GroupImage from '../assets/welcome.jpg'; // Replace with your actual image path
 
 const Homepage = () => {
@@ -11,7 +10,6 @@ const Homepage = () => {
   const [groupName, setGroupName] = useState('');
   const [description, setDescription] = useState('');
   const [numberOfMembers, setNumberOfMembers] = useState('');
-  const [groupId, setGroupId] = useState(uuidv4());
 
   const notifications = [
     { groupName: 'Group A', description: 'Description for Group A', debtAmount: '$100' },
@@ -36,10 +34,6 @@ const Homepage = () => {
 
   const handleCreateSubmit = (e) => {
     e.preventDefault();
-    navigate('/Mainpage');
-  };
-
-  const navigateToMainPage = () => {
     navigate('/Mainpage');
   };
 

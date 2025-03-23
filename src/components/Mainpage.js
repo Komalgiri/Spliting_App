@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { FaPlusCircle, FaCheckCircle } from 'react-icons/fa';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 //import gpayImage from '../assets/gpay.png';
 //import phonePeImage from '../assets/phone.png';
 import applogo from '../assets/app_logo.jpg';
@@ -13,34 +12,25 @@ const MainPage = () => {
   const [isTransactionModalOpen, setIsTransactionModalOpen] = useState(false);
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
   const [isDebtModalOpen, setIsDebtModalOpen] = useState(false);
-  const [selectedPayment, setSelectedPayment] = useState('Google Pay');
   const [newMemberName, setNewMemberName] = useState('');
   const [transactionAmount, setTransactionAmount] = useState('');
   const [debtAmount, setDebtAmount] = useState('');
-  const [members, setMembers] = useState([]);
+  const [setMembers] = useState([]);
   const [recentActivity, setRecentActivity] = useState([]);
-  const [isChatModalOpen, setIsChatModalOpen] = useState(false);
   //const [transactionAmount, setTransactionAmount] = useState('');
   const [transactionDescription, setTransactionDescription] = useState('');
   const [transactionDate, setTransactionDate] = useState('');
   const [transactionCategory, setTransactionCategory] = useState('');
-  const [receiptFile, setReceiptFile] = useState(null);
+  const [setReceiptFile] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("New Expense");
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
-  const [receipt, setReceipt] = useState(null);
+  const [isDropdownVisible] = useState(false);
 
   const tabRefs = useRef([]);
 
   const navigate = useNavigate();
 
-  const tabs = ['Transactions', 'Debts', 'Members', 'Recent Activity'];
-
-  useEffect(() => {
-    updateIndicator();
-  }, [currentTab]);
-
-  const updateIndicator = () => {
+  const tabs = useMemo(() => ['Transactions', 'Debts', 'Members', 'Recent Activity'], []);
+  const updateIndicator = useCallback(() => {
     const activeTab = tabRefs.current[tabs.indexOf(currentTab)];
     if (activeTab) {
       setIndicatorStyle({
@@ -48,7 +38,12 @@ const MainPage = () => {
         left: activeTab.offsetLeft,
       });
     }
-  };
+  }, [currentTab, tabs, tabRefs]); // ✅ Now it's memoized properly
+  
+  useEffect(() => {
+    updateIndicator();
+  }, [updateIndicator]); // ✅ No ESLint warning now
+  
 
   const handleTabClick = (tab) => {
     setCurrentTab(tab);
@@ -61,11 +56,6 @@ const MainPage = () => {
   
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
-  };
-
-  const handleOptionSelect = (option) => {
-    setSelectedOption(option);
-    setIsDropdownOpen(false); // Close dropdown after selecting
   };
 
   const toggleDarkMode = () => {
@@ -87,19 +77,7 @@ const MainPage = () => {
     handleCloseTransactionModal();
   };
   
-  const handleSaveTransaction = () => {
-    // Handle saving the transaction
-    console.log('Transaction saved', { selectedOption, transactionAmount, transactionDescription, transactionDate, transactionCategory, receipt });
-  };
 
-  const handleRepeatTransaction = () => {
-    // Handle repeating the transaction by clearing some fields but keeping the type
-    setTransactionAmount('');
-    setTransactionDescription('');
-    setTransactionDate('');
-    setTransactionCategory('');
-    setReceipt(null);
-  };
   const handleOpenMemberModal = () => {
     setIsMemberModalOpen(true);
   };
